@@ -12,15 +12,103 @@ interface Message {
 }
 
 interface ChatBotProps {
-  apiUrl?: string;
+  // No props needed for knowledge-based chatbot
 }
 
-const ChatBot: React.FC<ChatBotProps> = ({ apiUrl }) => {
+const ChatBot: React.FC<ChatBotProps> = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Knowledge base about Harshini
+  const knowledgeBase = `
+    My name is Harshini. I was born in Chennai, brought up in Bangalore, and my native place is Nellore. Family means everything 
+    to me, and my mom is truly my first love and my greatest source of strength. Without her, I cannot even imagine my life. Along 
+    with her, I love my dad and my grandmother very deeply, but my mom has always been my everything.
+
+    I did my schooling in Bangalore. As a child, I was quite naughty and playful, but when it came to studies, I was obedient and 
+    responsible. I was never a brilliant student—I was more on the average side—and honestly, I used to hate going to school. Still, 
+    I managed to pass and move forward. Later, I joined Narayana Pre-University College, and this phase was very memorable for me. 
+    It was here that I discovered my passion for dance and acting. Dancing became such an important part of my life, and I received 
+    many awards and appreciation for my performances. During this time, I also made some very close friends, including my best 
+    friend, Chaitra Reddy, who has always been an important part of my journey.
+
+    After that, I joined Vemana Institute of Technology for engineering. College life was full of fun, happiness, sadness, and even 
+    fights, but it was one of the best times of my life. I met another best friend, Yoshika Reddy, and together with Chaitra, the 
+    three of us shared countless memories. Even if we fought sometimes, we always came back to each other. I also continued my 
+    passion for dance during this time.
+
+    But then, life changed unexpectedly. When COVID struck, everything moved online, and my father was diagnosed with cancer. That 
+    moment turned my life upside down. While dealing with that pain, I also found love in my cousin, Harsha, whom we call "Bava" in 
+    South India. He became not just my love but also my best friend and biggest support. We planned to move to the US together, but 
+    while he got his visa, I couldn't. This created a long-distance relationship that was filled with struggles and fights. At the 
+    same time, my father's health kept getting worse, and eventually, I lost him. His passing was the most painful and traumatic 
+    moment of my life. Along with that, my relationship also went through many challenges, and we eventually stopped talking. I 
+    felt helpless, lonely, and completely lost.
+
+    Now, at 24, I am still figuring myself out. I am currently doing my internship at KN Soft Company, and I feel blessed to have 
+    found supportive colleagues and friends there who help me grow professionally. I know I am a very kind-hearted, emotional, and 
+    sometimes stubborn person. I feel things deeply—whether it's love, happiness, or pain—but I believe these qualities make me who 
+    I am.
+
+    Dance is still my biggest passion, and even though life has thrown many struggles my way, I continue to move forward. My 
+    journey so far has been filled with ups and downs, but I am learning, growing, and becoming stronger every single day.
+  `;
+
+  const generateResponse = (question: string): string => {
+    const q = question.toLowerCase();
+    
+    // Website-related questions
+    if (q.includes('website') || q.includes('site') || q.includes('work') || q.includes('how does this')) {
+      return "This is a personal website where you can learn about me and ask questions about my life, experiences, and journey. Feel free to ask me anything about my background, education, family, or experiences!";
+    }
+    
+    // Personal information questions
+    if (q.includes('name')) {
+      return "My name is Harshini.";
+    }
+    
+    if (q.includes('born') || q.includes('birth') || q.includes('where')) {
+      return "I was born in Chennai, brought up in Bangalore, and my native place is Nellore.";
+    }
+    
+    if (q.includes('family') || q.includes('mom') || q.includes('mother') || q.includes('dad') || q.includes('father')) {
+      return "Family means everything to me. My mom is truly my first love and my greatest source of strength - I cannot even imagine my life without her. I also love my dad and my grandmother very deeply. Unfortunately, I lost my father to cancer, which was the most painful and traumatic moment of my life.";
+    }
+    
+    if (q.includes('school') || q.includes('education') || q.includes('study') || q.includes('college')) {
+      return "I did my schooling in Bangalore. I was quite naughty and playful as a child, but obedient with studies. Later, I joined Narayana Pre-University College, where I discovered my passion for dance and acting. After that, I joined Vemana Institute of Technology for engineering. College life was one of the best times of my life!";
+    }
+    
+    if (q.includes('dance') || q.includes('dancing') || q.includes('passion') || q.includes('hobby')) {
+      return "Dance is my biggest passion! I discovered it during my time at Narayana Pre-University College and received many awards and appreciation for my performances. Even though life has thrown many struggles my way, I continue to pursue dance and it remains my greatest passion.";
+    }
+    
+    if (q.includes('friend') || q.includes('chaitra') || q.includes('yoshika')) {
+      return "I have two very close best friends - Chaitra Reddy, whom I met during my pre-university college days, and Yoshika Reddy, whom I met during engineering college. Together, the three of us shared countless memories. Even if we fought sometimes, we always came back to each other.";
+    }
+    
+    if (q.includes('love') || q.includes('harsha') || q.includes('bava') || q.includes('relationship')) {
+      return "I found love in my cousin, Harsha, whom we call 'Bava' in South India. He became not just my love but also my best friend and biggest support. We planned to move to the US together, but while he got his visa, I couldn't. This created challenges in our long-distance relationship, and we eventually stopped talking.";
+    }
+    
+    if (q.includes('work') || q.includes('job') || q.includes('intern') || q.includes('kn soft') || q.includes('company')) {
+      return "I am currently doing my internship at KN Soft Company. I feel blessed to have found supportive colleagues and friends there who help me grow professionally.";
+    }
+    
+    if (q.includes('age') || q.includes('old') || q.includes('24')) {
+      return "I am 24 years old and still figuring myself out. I'm learning, growing, and becoming stronger every single day.";
+    }
+    
+    if (q.includes('covid') || q.includes('pandemic') || q.includes('difficult') || q.includes('struggle')) {
+      return "When COVID struck, everything changed in my life. My father was diagnosed with cancer during this time, and everything moved online. It was a very difficult period that completely turned my life upside down.";
+    }
+    
+    // Default response for general questions
+    return "I'm here to share about my life and experiences! You can ask me about my family, education, dance passion, friends, work at KN Soft Company, or any other aspect of my journey. What would you like to know?";
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -41,54 +129,22 @@ const ChatBot: React.FC<ChatBotProps> = ({ apiUrl }) => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputValue;
     setInputValue('');
     setIsLoading(true);
 
-    try {
-      if (apiUrl) {
-        const response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ message: inputValue }),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          const botMessage: Message = {
-            id: (Date.now() + 1).toString(),
-            text: data.response || data.message || 'I received your message!',
-            isUser: false,
-            timestamp: new Date(),
-          };
-          setMessages(prev => [...prev, botMessage]);
-        } else {
-          throw new Error('Failed to send message');
-        }
-      } else {
-        // Demo response when no API URL is provided
-        setTimeout(() => {
-          const botMessage: Message = {
-            id: (Date.now() + 1).toString(),
-            text: 'Thanks for your message! Please configure the API URL to connect to your backend.',
-            isUser: false,
-            timestamp: new Date(),
-          };
-          setMessages(prev => [...prev, botMessage]);
-        }, 1000);
-      }
-    } catch (error) {
-      const errorMessage: Message = {
+    // Simulate AI thinking time
+    setTimeout(() => {
+      const botResponse = generateResponse(currentInput);
+      const botMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'Sorry, I couldn\'t process your message. Please try again.',
+        text: botResponse,
         isUser: false,
         timestamp: new Date(),
       };
-      setMessages(prev => [...prev, errorMessage]);
-    } finally {
+      setMessages(prev => [...prev, botMessage]);
       setIsLoading(false);
-    }
+    }, 1000);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
