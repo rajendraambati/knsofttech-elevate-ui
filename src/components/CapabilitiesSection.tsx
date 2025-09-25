@@ -48,7 +48,11 @@ const CapabilitiesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-gradient-subtle">
+    <section 
+      id="services" 
+      className="py-24 bg-gradient-subtle" 
+      data-background-color="hsl(var(--scroll-bg-capabilities))"
+    >
       <div className="container px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16">

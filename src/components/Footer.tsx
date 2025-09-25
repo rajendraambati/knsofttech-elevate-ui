@@ -55,7 +55,10 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gradient-hero text-white">
+    <footer 
+      className="bg-gradient-hero text-white" 
+      data-background-color="hsl(var(--scroll-bg-footer))"
+    >
       <div className="container px-4 md:px-6 py-16">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 mb-12">

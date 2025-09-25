@@ -50,6 +50,12 @@ All colors MUST be HSL.
     --gradient-accent: linear-gradient(135deg, 217 91% 60% 0%, 217 91% 55% 100%);
     --gradient-subtle: linear-gradient(180deg, 220 13% 91% 0%, 0 0% 100% 100%);
     
+    /* Scroll background colors for sections */
+    --scroll-bg-hero: hsl(218 11% 15%);
+    --scroll-bg-capabilities: hsl(217 91% 60%);
+    --scroll-bg-insights: hsl(220 13% 91%);
+    --scroll-bg-footer: hsl(218 11% 15%);
+    
     /* Professional shadows */
     --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
@@ -111,6 +117,12 @@ All colors MUST be HSL.
     --gradient-accent: linear-gradient(135deg, 217 91% 60% 0%, 217 91% 55% 100%);
     --gradient-subtle: linear-gradient(180deg, 217 19% 27% 0%, 218 11% 15% 100%);
     
+    /* Dark mode scroll background colors */
+    --scroll-bg-hero: hsl(218 11% 15%);
+    --scroll-bg-capabilities: hsl(217 19% 27%);
+    --scroll-bg-insights: hsl(217 19% 35%);
+    --scroll-bg-footer: hsl(218 11% 15%);
+    
     --shadow-glow: 0 0 40px hsl(217 91% 60% / 0.25);
   }
 }
@@ -122,6 +134,7 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   /* Professional typography scale */

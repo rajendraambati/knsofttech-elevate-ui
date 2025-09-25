@@ -35,7 +35,11 @@ const InsightsSection = () => {
   ];
 
   return (
-    <section id="insights" className="py-24 bg-background">
+    <section 
+      id="insights" 
+      className="py-24 bg-background" 
+      data-background-color="hsl(var(--scroll-bg-insights))"
+    >
       <div className="container px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16">

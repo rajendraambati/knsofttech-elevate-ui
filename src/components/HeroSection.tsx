@@ -4,7 +4,10 @@ import heroBackground from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section 
+      className="relative min-h-screen flex items-center justify-center overflow-hidden" 
+      data-background-color="hsl(var(--scroll-bg-hero))"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <img 
