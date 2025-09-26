@@ -80,6 +80,19 @@ All colors MUST be HSL.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Enhanced scroll transition for backgrounds */
+    --scroll-background-1: hsl(210, 100%, 50%); /* Light blue #00ccff */
+    --scroll-background-2: hsl(220, 100%, 40%); /* Dark blue #0033cc */ 
+    --scroll-background-3: hsl(0, 100%, 50%);   /* Red #ff0000 */
+    --scroll-background-4: hsl(240, 10%, 20%);  /* Dark gray #333 */
+    
+    /* Glass morphism and mirror effects */
+    --glass-bg: hsla(240, 100%, 100%, 0.05);
+    --glass-border: hsla(240, 100%, 100%, 0.1);
+    --glass-shadow: 0 8px 32px hsla(240, 100%, 0%, 0.3);
+    --mirror-gradient: linear-gradient(135deg, hsla(240, 100%, 100%, 0.1), hsla(240, 100%, 100%, 0.05));
+    --backdrop-blur: blur(20px);
   }
 
   .dark {
@@ -183,5 +196,72 @@ All colors MUST be HSL.
   
   .gradient-accent {
     background: var(--gradient-accent);
+  }
+}
+
+/* Glass morphism effects */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  background: var(--mirror-gradient);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
+}
+
+.mirror-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.mirror-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--mirror-gradient);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.pill-button {
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: hsl(var(--foreground));
+  transition: all 0.3s ease;
+}
+
+.pill-button:hover {
+  background: hsla(260, 100%, 70%, 0.1);
+  border-color: hsl(var(--primary));
+  transform: translateY(-1px);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 4rem);
   }
 }

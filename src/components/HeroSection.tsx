@@ -1,88 +1,65 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
-import heroBackground from "@/assets/hero-bg.jpg";
-
 const HeroSection = () => {
   return (
     <section 
-      className="relative min-h-screen flex items-center justify-center overflow-hidden" 
-      data-background-color="hsl(var(--scroll-bg-hero))"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      data-background-color="#00ccff"
     >
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <img 
-          src={heroBackground} 
-          alt="Technology Background" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-hero opacity-90" />
-      </div>
-
       {/* Content */}
-      <div className="relative z-10 container px-4 md:px-6 text-center text-white">
-        <div className="max-w-4xl mx-auto space-y-8">
-          {/* Main Headline */}
-          <div className="space-y-4">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
-              Innovate, Transform,{" "}
-              <span className="text-primary bg-clip-text text-transparent bg-gradient-accent">
-                Accelerate
-              </span>{" "}
-              with KN Softtech
-            </h1>
-            
-            {/* Sub-headline */}
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Empowering enterprises across industries to scale at speed with cutting-edge 
-              technology solutions, driving agility, resilience, and efficiency.
-            </p>
+      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Pill Badge */}
+        <div className="mb-8 flex justify-center">
+          <div className="pill-button">
+            INTRODUCING AI
           </div>
-
-          {/* Call to Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-            <Button 
-              size="lg" 
-              className="btn-primary px-8 py-3 text-base font-semibold"
-            >
-              Explore Our Services
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="btn-outline px-8 py-3 text-base font-semibold border-white/30 text-white hover:bg-white hover:text-primary"
-            >
-              <Play className="mr-2 h-5 w-5" />
-              Watch Demo
-            </Button>
-          </div>
-
-          {/* Trust Indicators */}
-          <div className="pt-16">
-            <p className="text-sm text-gray-400 mb-6">Trusted by industry leaders worldwide</p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 opacity-60">
-              <div className="h-12 bg-white/10 rounded-md flex items-center justify-center">
-                <span className="text-white font-semibold">Fortune 500</span>
+        </div>
+        
+        {/* Main Headline */}
+        <h1 className="hero-title text-white mb-6 leading-none">
+          AI SOLUTIONS FOR
+          <br />
+          <span className="block">DEVELOPERS</span>
+        </h1>
+        
+        {/* Sub-headline */}
+        <p className="text-lg sm:text-xl text-white/70 mb-12 max-w-2xl mx-auto leading-relaxed font-light">
+          the best way to reach humans instead of spam folders,
+          <br />
+          clever transactional and marketing emails at scale.
+        </p>
+        
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
+          <button className="pill-button border-purple-400/50 text-purple-300 hover:bg-purple-500/20 hover:border-purple-400">
+            Documentation &gt;
+          </button>
+          <button className="px-8 py-3 bg-white/90 hover:bg-white text-black rounded-full font-medium transition-all duration-300 hover:scale-105">
+            Get Started &gt;
+          </button>
+        </div>
+        
+        {/* 3D Element Placeholder */}
+        <div className="flex justify-end items-center mt-12 lg:mt-0 lg:absolute lg:right-8 lg:top-1/2 lg:-translate-y-1/2">
+          <div className="relative">
+            {/* This will be enhanced with actual 3D model later */}
+            <div className="w-64 h-64 lg:w-80 lg:h-80 relative">
+              <div className="absolute inset-0 glass-card flex items-center justify-center">
+                <div className="text-6xl">🤖</div>
               </div>
-              <div className="h-12 bg-white/10 rounded-md flex items-center justify-center">
-                <span className="text-white font-semibold">Enterprise</span>
+              <div className="absolute top-4 right-4 text-purple-400 font-bold text-xl">
+                Front
               </div>
-              <div className="h-12 bg-white/10 rounded-md flex items-center justify-center">
-                <span className="text-white font-semibold">Global</span>
-              </div>
-              <div className="h-12 bg-white/10 rounded-md flex items-center justify-center">
-                <span className="text-white font-semibold">Innovation</span>
+              <div className="absolute bottom-4 right-4 text-purple-400 font-bold text-4xl">
+                End
               </div>
             </div>
           </div>
         </div>
       </div>
-
+      
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-bounce" />
+          <div className="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
